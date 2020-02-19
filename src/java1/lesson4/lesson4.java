@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class lesson4 {
     public static char[][] map;
-    public static final int SIZE = 5;
-    public static final int DOTS_TO_WIN = 4;
+    public static final int SIZE = 3;
+    public static final int DOTS_TO_WIN = 3;
 
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
@@ -47,14 +47,10 @@ public class lesson4 {
         System.out.println();
     }
 
-    public static void humanTurn() throws IOException {
+    public static void humanTurn() {
         int x, y;
         do {
             System.out.println("Введите координаты в формате X Y");
-            try {
-                x = sc.nextInt() - 1;
-                y = sc.nextInt() - 1;
-            } catch (IOException e);
             x = sc.nextInt() - 1;
             y = sc.nextInt() - 1;
         } while (!isCellValid(x, y));
@@ -77,17 +73,23 @@ public class lesson4 {
         map[y][x] = DOT_O;
     }
 
-    public static boolean checkWin(char symb) {
-        if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-        if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-        if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-        if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-        if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-        if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-        if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+
+    private static boolean checkWin(char[][] table, char x) {
+        int len = table.length;
+        for (int i = 0; i < table.length; i++) {
+            int sX = 0, sY = 0, d1 = 0, d2 = 0;
+            for (int j = 0; j < table.length; j++) {
+                sX += table[i][j] == x ? 1 : 0;
+                sY += table[j][i] == x ? 1 : 0;
+                d1 += table[j][j] == x ? 1 : 0;
+                d2 += table[j][len - j - 1] == x ? 1 : 0;
+            }
+            if (sX == len || sY == len
+                    || d1 == len || d2 == len) return true;
+        }
         return false;
     }
+
 
     public static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
@@ -104,7 +106,7 @@ public class lesson4 {
         while (true) {
             humanTurn();
             printMap();
-            if (checkWin(DOT_X)) {
+            if (checkWin(map, DOT_X)) {
                 System.out.println("Победил человек");
                 break;
             }
@@ -114,7 +116,7 @@ public class lesson4 {
             }
             aiTurn();
             printMap();
-            if (checkWin(DOT_O)) {
+            if (checkWin(map, DOT_O)) {
                 System.out.println("Победил Искуственный Интеллект");
                 break;
             }
