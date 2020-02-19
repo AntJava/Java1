@@ -26,9 +26,7 @@ public class Teacher {
 
     public void showStudent() {
         for (Subject subject : subjects) {
-            //for (Group group : subjects.get(0).schedule.students.students) {
-                System.out.println(subject.schedule.group.students);
-            //}
+            System.out.println(subject.schedule.group.students);
         }
     }
 }
