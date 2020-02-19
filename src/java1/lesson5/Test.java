@@ -47,34 +47,27 @@ public class Test {
         Teacher infTeacher2 = new Teacher("Sierra", "Kathy", "B");
         sub1.applyTeacher(mathTeacher1);
         sub2.applyTeacher(mathTeacher2);
+        //sub2.applyTeacher(mathTeacher1);
         sub3.applyTeacher(infTeacher1);
         sub4.applyTeacher(infTeacher2);
-        //System.out.println(Arrays.toString(students1));
-        //System.out.println(group1.students);
-        //System.out.println(group1.schedule);
-        //System.out.println(group1.schedule.subjects.get(0).teachers);
-        //System.out.println(group1.schedule.subjects.get(1).teachers);
+        //sub4.applyTeacher(infTeacher1);
+
         System.out.printf("Информация об учителях студента   " + students1[0] + ":\n");
         students1[0].showTeacher();
         System.out.printf("\nИнформация об учителях студента   " + students2[0] + ":\n");
         students2[0].showTeacher();
-        System.out.printf("\nИнформация о студентах учителя " + mathTeacher1 + ":\n");
-
-        System.out.printf("\nИнформация о студентах учителя " + infTeacher1 + ":\n");
-
+        System.out.printf("\nИнформация о студентах учителя " + mathTeacher2 + ":\n");
+        mathTeacher2.showStudent();
+        System.out.printf("\nИнформация о студентах учителя " + infTeacher2 + ":\n");
+        infTeacher2.showStudent();
         System.out.printf("\nИнформация о предметах студента " + students1[1] + ":\n");
-
         System.out.println(students1[2].getGroup().schedule.subjects);
         System.out.printf("\nИнформация о предметах студента " + students2[1] + ":\n");
         System.out.println(students2[2].getGroup().schedule.subjects);
-        System.out.printf("\nРасписание студента " + students1[2] + ": пердмет, время, учитель " + ":\n");
+        System.out.printf("\nРасписание студента " + students1[2] + ": предмет, время, учитель " + ":\n");
         students1[3].showStudentSchedule();
-        System.out.printf("\nРасписание студента " + students2[2] + ": пердмет, время, учитель " + ":\n");
+        System.out.printf("\nРасписание студента " + students2[2] + ": предмет, время, учитель " + ":\n");
         students2[3].showStudentSchedule();
-        //System.out.println(mathTeacher.subjects.get(1).schedule.group.students);
-        //System.out.println(infTeacher.subjects);
-        //System.out.println(infTeacher.subjects.get(1).schedule.group.students);
-//        System.out.println(s1.getGroup().schedule.subjects.get(0).teachers.get(0));
 
     }
 }

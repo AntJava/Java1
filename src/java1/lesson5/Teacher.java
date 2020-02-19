@@ -24,11 +24,11 @@ public class Teacher {
         subject.teachers.add(this);
     }
 
-//    public void showStudent() {
-//        for (Student students : subjects.schedule.group) {
-//            for (Teacher teacher : students.students) {
-//                System.out.println(teacher);
-//            }
-//        }
-//    }
+    public void showStudent() {
+        for (Subject subject : subjects) {
+            //for (Group group : subjects.get(0).schedule.students.students) {
+                System.out.println(subject.schedule.group.students);
+            //}
+        }
+    }
 }
